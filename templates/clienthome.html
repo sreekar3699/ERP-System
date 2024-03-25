@@ -1,0 +1,680 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrotsuite</title>
+    
+<link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif, cursive;
+}
+
+body {
+  background: #13091F;
+  background-size: 150% 350%;
+}
+
+.datetime {
+  font-size: 16px;
+  padding: 0px;
+  color: #FF5F1F;
+  background: black;
+  box-shadow: 0 0 10px #1B1212;
+  width: 300px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif, cursive;
+}
+
+.time {
+  font-size: 1.5em;
+  color: white;
+}
+
+.date {
+  margin-top: 5px;
+  font-size: 1em;
+}
+
+.card {
+  margin: 10px 0;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.card {
+  border-radius: none;
+}
+
+.card {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin: 15px 0;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%);
+  color: #FF5F1F;
+}
+
+.card-stats .card-header {
+  float: left;
+  text-align: center;
+}
+
+.fa-chart-line {
+  font-size: 35px;
+  position: relative;
+  color: #FF5F1F;
+}
+
+.card .card-header {
+  padding: 15px 20px 0;
+  border-radius: 0;
+  z-index: 2;
+  background-color: #1B1212 !important;
+  border-bottom: none;
+}
+
+.card .card-footer .stats .material-icons {
+  position: relative;
+  top: 4px;
+  font-size: 16px;
+}
+
+.card-stats .card-header span {
+  font-size: 36px;
+  line-height: 56px;
+  width: 56px;
+  height: 56px;
+}
+
+.icon.icon-warning {
+  color: #ff9800;
+}
+
+.icon.icon-rose {
+  color: #e91e63;
+}
+
+.icon.icon-success {
+  color: #4caf50;
+}
+
+.icon.icon-info {
+  color: #00bcd4;
+}
+
+.card-stats .card-content {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.card .card-content {
+  padding: 15px 20px;
+  position: relative;
+}
+
+.card .card-content .category {
+  margin-bottom: 0;
+}
+
+.card .category:not([class*="text-"]) {
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card .card-title:not(.card-calendar .card-title) {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.card-stats .card-title {
+  margin: 0;
+}
+
+.card .card-footer .stats {
+  line-height: 22px;
+  color: #555555;
+  font-size: 15px;
+}
+
+.card .card-footer div {
+  display: inline-block;
+}
+
+.card .card-header-text h4 {
+  margin-top: 0;
+  margin-bottom: 3px;
+  font-size: 19px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #FF5F1F;
+
+}
+
+.table>thead>tr>th {
+  text-align: center;
+  border-bottom-width: 1px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #FF5F1F;
+}
+
+.table>thead>tr>td {
+  background-color: grey;
+}
+
+.name {
+  text-decoration: none;
+  color: white;
+}
+
+.card .card-content {
+  padding: 15px 20px;
+  position: relative;
+}
+</style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <!-- Carrotsuite navigation -->
+        <nav class="carrotsuite-nav">
+          <div class="logo">
+            <a href="index.html" class="active nav-item">
+              <img src="images/Carrotsuite.jpg" alt="Carrotsuite" />
+            </a>
+          </div>
+
+          <div class="icons left">
+            <a href="#" class="nav-item"><i class="fas fa-bars"></i></a>
+            <a href="#" class="nav-item"> <i class="fas fa-compress"></i></a>
+            <a href="#" class="nav-item"> <i class="fas fa-search"></i></a>
+          </div>
+          <div class="icons right">
+            <a href="#" class="nav-item">
+              <div class="badge"><span>5</span></div>
+              <i class="far fa-bell"></i>
+            </a>
+            <a href="#" class="nav-item"><i class="far fa-envelope"></i></a>
+          </div>
+          <div class="user" id="user">
+            <a href="#" class="user-link">no name</a>
+            <div class="user-img-wrapper">
+              <img src="images/useravatar.png" alt="User 1" />
+            </div>
+          </div>
+        </nav>
+        <!-- end of feeds navigation -->
+      </header>
+      <main class="main">
+        <section class="sidebar">
+          <h3>CRM</h3>
+          <ul class="menu">
+            <li>
+              <a href="#" title="Home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" title="Clients">
+                <i class="fas fa-sitemap"></i>
+                <span>Clients</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Upcoming birthdays">
+                <i class="fas fa-birthday-cake"></i>
+                <span>Upcoming birthdays</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Deals">
+                <i class="fas fa-thumbs-up"></i>
+                <span>Deals</span>
+              </a>
+            </li>
+            <li class="menu-heading">
+              <h3>Log activity</h3>
+            </li>
+            <li>
+              <a href="#" title="Activity report">
+                <i class="fas fa-chart-bar"></i>
+                <span>Activity report</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Sales target">
+                <i class="fas fa-bullseye"></i>
+                <span>Sales target</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Sales performance">
+                <i class="fas fa-chart-line"></i>
+                <span>Sales performance</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+        
+<section class="home-section bg-black" style="padding-left: 20px;">
+    <div class="home-content">
+      <i class='bx bx-menu' style="color: #ff5f1f;" style="padding-left: 20px;"></i>
+      {% block head-title %}
+      <span class="text" style="color: #fff;">Dashboard</span>
+      {% endblock head-title %}
+    </div>
+  
+    <div class="datetime mx-auto mt-2 bg-black">
+      <div class="time mx-2"></div>
+      <div class="date mx-2"></div>
+    </div>
+  
+    <div class="main-content mt-4">
+      <div class="container-fluid bg-black">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="" style="text-decoration: none;">
+              <div class="card card-stats bg-dark">
+                <div class="card-header">
+                  <div class="icon icon-warning">
+                    <span class="material-icons">equalizer</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="category"><strong>Products</strong></p>
+                  <h3 class="card-title">{{tot_proj}}</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="" style="text-decoration: none;">
+              <div class="card card-stats bg-dark">
+                <div class="card-header">
+                  <div class="icon icon-rose">
+                    <span class="material-icons">shopping_cart</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="category"><strong>Billing</strong></p>
+                  <h3 class="card-title">{{total_architect}}</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="" style="text-decoration: none;">
+              <div class="card card-stats bg-dark">
+                <div class="card-header">
+                  <div class="icon icon-success">
+                    <span class="material-icons" style="color: #EB7F23;">&#8377</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="category"><strong>Revenue</strong></p>
+                  <h3 class="card-title"> {{tot_pay}}</h3>
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                      aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                      style="width: 75%; background-color: #FF5F1F;"></div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="" style="text-decoration: none;">
+              <div class="card card-stats bg-dark">
+                <div class="card-header">
+                  <div class="icon icon-info">
+                    <span class="material-icons">follow_the_signs</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="category"><strong>Total Staff</strong></p>
+                  <h3 class="card-title">{{staff}}</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+  
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="" style="text-decoration: none;">
+              <div class="card card-stats bg-dark">
+                <div class="card-header">
+                  <div class="icon icon-success">
+                    <span class="material-icons">attach_money</span>
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="category"><strong>Monthly Expense</strong></p>
+                  <h3 class="card-title">{{total_expenses}}</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="container col-lg-7" style="width: 50%">
+            <div>
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+  
+  
+          <div class="col-lg-5 col-md-12">
+            <a href="" style="text-decoration: none;">
+              <div class="card bg-dark" style="min-height: 300px">
+                <div class="card-header card-header-text">
+                  <h4 class="card-title">To-Do-List</h4>
+                  <p class="category">Today's Work</p>
+                </div>
+                <div class="card-content table-responsive">
+                  <table class="table table-hover " style="text-align: center">
+                    <thead class="text-primary">
+                      <tr>
+                        <th>ID</th>
+                        <th>Staff</th>
+                        <th>Task</th>
+                        <th>Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in sometasks %}
+                      <tr>
+                        <td style="color: #FF5F1F; z-index: 999;">{{forloop.counter}}</td>
+                        <td>{{i.to_whom}}</td>
+                        <td><a href="#" class="name">{{i.Task}}...</a></td>
+                        <td>{{i.dateandtime}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+            </a>
+  
+          </div>
+        </div>
+      </div>
+  
+  
+    </div>
+    </div>
+  </section>
+        <!-- <section class="page-content">
+          <article class="header">
+            <div class="info">
+              <p>Loading...</p>
+              <p><span>Dashboard</span> _Client</p>
+            </div>
+            <div class="dropdown">
+              <button class="dropbtn">
+                Actions <i class="fas fa-caret-up"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2"
+                    />
+                  </svg>
+                  Send SMS
+                </a>
+                <a href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <polyline points="3 7 12 13 21 7" />
+                  </svg>
+                  Send Email
+                </a>
+                <a href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1"
+                    />
+                    <polyline points="9 15 12 12 15 15" />
+                    <line x1="12" y1="12" x2="12" y2="21" />
+                  </svg>
+                  Export
+                </a>
+                <a href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M19 18a3.5 3.5 0 0 0 0 -7h-1a5 4.5 0 0 0 -11 -2a4.6 4.4 0 0 0 -2.1 8.4"
+                    />
+                    <line x1="12" y1="13" x2="12" y2="22" />
+                    <polyline points="9 19 12 22 15 19" />
+                  </svg>
+                  Import
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="board">
+            <p>Clients</p>
+            <section class="boxes">
+              <div class="box bg-pink">
+                <p>All customers</p>
+                <div class="icon-value">
+                  <div class="icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <p class="value">0</p>
+                </div>
+              </div>
+              <div class="box bg-purple">
+                <p>No of transactions</p>
+                <div class="icon-value">
+                  <div class="icon">
+                    <i class="fas fa-exchange-alt"></i>
+                  </div>
+                  <p class="value">0</p>
+                </div>
+              </div>
+              <div class="box bg-cyan">
+                <p>Current/Ongoing</p>
+                <div class="icon-value">
+                  <div class="icon"><i class="fab fa-forumbee"></i></div>
+                  <p class="value">0</p>
+                </div>
+              </div>
+              <div class="box bg-ash">
+                <p>post sales</p>
+                <div class="icon-value">
+                  <div class="icon">
+                    <i class="fas fa-chart-pie"></i>
+                  </div>
+                  <p class="value">0</p>
+                </div>
+              </div>
+              <div class="box bg-deep-blue">
+                <p>Incoming sales</p>
+                <div class="icon-value">
+                  <div class="icon">
+                    <i class="fas fa-cart-arrow-down"></i>
+                  </div>
+                  <p class="value">0</p>
+                </div>
+              </div>
+              <div class="box bg-pale">
+                <p>Passive transactions</p>
+                <div class="icon-value">
+                  <div class="icon">
+                    <i class="fas fa-users"></i>
+                  </div>
+                  <p class="value">0</p>
+                </div>
+              </div>
+            </section>
+            <section class="create-client">
+              <button><i class="fas fa-plus"></i>Create client</button>
+            </section>
+            <form action="" class="form">
+              <div class="form-element">
+                <label for="start_date">Start date</label>
+                <input type="date" name="start_date" id="start_date" />
+              </div>
+              <div class="form-element">
+                <label for="end_date">End date</label>
+                <input type="date" name="end_date" id="end_date" />
+              </div>
+              <div class="form-element">
+                <label for="status">Select status</label>
+                <select name="status" id="status">
+                  <option value="" disabled>All clients</option>
+                  <option value="">Status 1</option>
+                  <option value="">Status 2</option>
+                </select>
+              </div>
+              <div class="form-element">
+                <label for="items">Item</label>
+                <select name="items" id="items">
+                  <option value="" disabled>Select an item</option>
+                  <option value="">Item 1</option>
+                  <option value="">Item 2</option>
+                </select>
+              </div>
+
+              <div class="form-element">
+                <label for="country">Country</label>
+                <select name="country" id="country">
+                  <option value="" disabled>Select country</option>
+                  <option value="">Status 1</option>
+                  <option value="">Status 2</option>
+                </select>
+              </div>
+              <div class="form-element">
+                <label for="state">State</label>
+                <select name="state" id="state">
+                  <option value="" disabled>Select state</option>
+                  <option value="">Item 1</option>
+                  <option value="">Item 2</option>
+                </select>
+              </div>
+              <div class="form-element">
+                <label for="marketer">Marketer</label>
+                <select name="marketer" id="marketer">
+                  <option value="" disabled>Select marketer</option>
+                  <option value="">Item 1</option>
+                  <option value="">Item 2</option>
+                </select>
+              </div>
+              <div class="form-element">
+                <label for="branch">Branch</label>
+                <select name="branch" id="branch">
+                  <option value="" disabled>Select branch</option>
+                  <option value="">Item 1</option>
+                  <option value="">Item 2</option>
+                </select>
+              </div>
+            </form>
+          </article>
+        </section> -->
+      </main>
+    </div>
+    <script>
+      const menuLinks = document.querySelectorAll(".sidebar .menu a");
+
+      for (const link of menuLinks) {
+        link.addEventListener("mouseenter", function () {
+          if (window.matchMedia("(max-width: 626px)").matches) {
+            const tooltip = this.querySelector("span").textContent;
+            this.setAttribute("title", tooltip);
+          } else {
+            this.removeAttribute("title");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

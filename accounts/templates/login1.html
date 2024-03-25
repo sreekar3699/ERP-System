@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+  <title>Document</title>
+</head>
+<body class="body1">
+  <div class="container">
+    <div class="form signin">
+      <form action="/login" method="POST">
+        {% csrf_token %}
+        <h2>Sign in</h2>
+        <br>
+        <div class="inputBox">
+          <input type="text" required="required" name="username">
+          <i class="fa fa-user" aria-hidden="true"></i>
+
+          <span>Username</span>
+        </div>
+        <br>
+        <div class="inputBox">
+          <input type="password" required="required" name="password">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+          <span>Password</span>
+        </div>
+        <br>
+        <div class="inputBox">
+          <input type="submit" value="Login">
+        </div>
+        <br>
+        <p>Forgot Password ? <a href="/reset" class="create">Reset</a></p>
+        <br>
+        <br>
+        <p>New Here ? <a href="/register" class="create">Register</a></p>
+        {% for message in messages%}
+        <h2>{{message}}</h2>
+        {%endfor%}
+      </form>
+    </div>
+
+
+
+  </div>
+  <script>
+    let login=document.querySelector('.login');
+    let register=document.querySelector('.create');
+    let container=document.querySelector('.container');
+
+
+    login.onclick=function()
+    {
+      container.classList.add('signinForm')
+    }
+    register.onclick=function()
+    {
+      container.classList.remove('signinForm')
+    }
+  </script>
+</body>
+</html>
+
+{% endblock content %}

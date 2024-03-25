@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  <title>ERP</title>
+</head>
+<body>
+ <nav>
+   <div class="logo">ERP</div>
+   <!-- toggle menu button -->
+   <span class="menubtn" onclick="openNav()">&#9776;</span>
+
+   <div class="navLinks">
+     <ul>
+       <li><a href="/">Home</a></li>
+       <li><a href="/features">Services</a></li>
+       <li><a href="/contact">Contact</a></li>
+       <a href="/login"><button type="button">Login</button></a>
+     </ul>
+   </div>
+ </nav>
+   <!-- responsive side navbar -->
+   <div class="sideNav" id="sidenav">
+     <a href="#" class="closeBtn" onclick="closeNav()"> &#10006;</a>
+     <a href="/">Home</a>
+
+     <a href="/features">Services</a>
+     <a href="/contact">Contact</a>
+     <button type="button"><a href="login">Login</a></button>
+   </div>
+  {% block content %}
+
+
+   <!-- Header content with banner image -->
+   <div class="row">
+     <div class="column1">
+       <h1>Responsive Maintanance</h1>
+         <br>
+       <p>Contact us to grow your business! <br>Lets grow together!</p>
+       <button><a href="/pricing">PURCHASE</a></button>
+     </div>
+     <div class="column2">
+       <img src="https://www.hmablogs.com/wp-content/uploads/2022/06/banner-img.png" alt="banner" width="500px">
+     </div>
+   </div>
+      {% endblock content %}
+
+
+   <!-- javascript to make side menu appear -->
+ <script>
+   function openNav() {
+     document.getElementById("sidenav").style.width = "50%";
+   }
+   function closeNav() {
+     document.getElementById("sidenav").style.width = "0%";
+   }
+ </script>
+
+</body>
+</html>

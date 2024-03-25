@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+  <title>Document</title>
+</head>
+<body class="body1">
+  <div class="container">
+    <div class="form signup">
+      <form method="POST" action="/contactDetails" >
+        {% csrf_token %}
+        <h2>Contact </h2>
+        <br>
+        <h6 style="color:#00dfc4 ">Or contact via mail <a href="mailto:sunnysnivas@gmail.com" style="color:rgba(255,255,255,0.5)">sunnysnivas@gmail.com</a></h6>
+        <br>
+        <div class="inputBox">
+          <input type="text" required="required" name="name">
+          <i class="fa fa-user" aria-hidden="true"></i>
+
+          <span>Name</span>
+        </div>
+        <br>
+        <div class="inputBox">
+          <input type="text" required="required" name="email">
+          <i class="fa fa-envelope" aria-hidden="true"></i>
+
+          <span>Email Address</span>
+        </div>
+        <br>
+
+        <br>
+        <div class="inputBox">
+                <textarea rows="4" cols="50" name="message"></textarea>
+               <i class="fa fa-comment" aria-hidden="true"></i>
+                <span>Comment</span>
+
+        </div>
+        <br>
+<!--        <div class="inputBox">-->
+<!--          <label for="upload">Upload a file</label>-->
+<!--      <input type="file" name="file" id="upload" />-->
+
+<!--        </div>-->
+
+        <br>
+        <div class="inputBox">
+          <input type="submit" value="Submit">
+        </div>
+        <br>
+
+      </form>
+    </div>
+
+
+  </div>
+  <script>
+    let login=document.querySelector('.login');
+    let register=document.querySelector('.create');
+    let container=document.querySelector('.container');
+
+
+    login.onclick=function()
+    {
+      container.classList.add('signinForm')
+    }
+    register.onclick=function()
+    {
+      container.classList.remove('signinForm')
+    }
+  </script>
+</body>
+</html>
+
+{% endblock  %}
