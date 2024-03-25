@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/addProducts.css' %}">
+
+</head>
+
+<body >
+
+    <section class="page-content">
+        <form action="/add_Product" method="POST" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="container_AddProducts">
+        <div class="parent">
+
+            <div class="div1">
+
+                <div class="row">
+                    <div class="col-12">
+                        <h1 style="color:white" >Add Product</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="div2">
+                <div class="form-group mb-3">
+                    <label for="name" >Product Name
+                    </label>
+                    <br>
+                    <input id="name" name="product_name" type="text" class="form-control validate" required />
+
+                </div>
+
+            </div>
+            <div class="div3">
+                    <label style="color:white" for="description">Description</label>
+                    <br>
+                    <textarea class="form-control validate" rows="3" required name="product_description"></textarea>
+                </div>
+            <div class="div4">
+                <div class="div2 d">
+                            <label for="category" class="labe">Category :</label>
+                            <select name="category_id" class="inp" id="category">
+                                <option value=""></option>
+                                {% for category in categories %}
+                                    <option value="{{category.id}}">{{category.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+            </div>
+            <div class="div5">
+
+                <label  style="color:white" for="expire_date">Price
+                </label>
+                <input id="expire_date" name="product_price" type="text" class="form-control validate"
+                    data-large-mode="true" />
+
+            </div>
+            <div class="div6">
+
+                <label
+                       style="color:white"     for="stock"
+                            >Units In Stock
+                          </label>
+                          <input
+                            id="stock"
+                            name="stock"
+                            type="text"
+                            class="form-control validate"
+                            required
+                          />
+
+            </div>
+            <div class="div8">
+                <br>
+                <br>
+                <br>
+                <div class="tm-product-img-dummy mx-auto">
+
+                  <img src="{% static 'images/upload.png' %}" alt="upload" style="width: 80px;height: 80px;"onclick="document.getElementById('fileInput').click();">
+                  </div>
+            </div>
+            <div class="div9">
+                <br>
+                <input id="fileInput" type="file" style="display:none;" name="product_image" />
+                  <input
+                    type="button"
+                    class="btn btn-primary btn-block mx-auto"
+                    value="UPLOAD PRODUCT IMAGE"
+                    onclick="document.getElementById('fileInput').click();" name="img"
+                  />
+            </div>
+            <div class="div7">
+                <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+
+            </div>
+        </div>
+    </div>
+        </form>
+        </section>
+</body>
+
+</html>
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load profiletags %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Payment Invoice</title>
+  </head>
+  <body>
+    <h1>Payment Invoice</h1>
+    <table>
+      <tr>
+        <th>Invoice ID</th>
+        <td>{{ invoice_id }}</td>
+      </tr>
+      <tr>
+        <th>Customer Name</th>
+        <td>{{ customer_name }}</td>
+      </tr>
+      <tr>
+        <th>Customer Email</th>
+        <td>{{ customer_email }}</td>
+      </tr>
+      <tr>
+        <th>Amount Paid</th>
+        <td>{{ amount_paid }}</td>
+      </tr>
+      <tr>
+        <th>Payment ID</th>
+        <td>{{ payment_id }}</td>
+      </tr>
+      <tr>
+        <th>Payment Date</th>
+        <td>{{ payment_date }}</td>
+      </tr>
+    </table>
+
+  {{ get_phone_number }}
+  </body>
+</html>

@@ -1,0 +1,373 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>GFG</title>
+	<style>
+		body {
+	 font-family: "Open Sans", sans-serif;
+	 background: #f4f4f4;
+}
+ .checkout__box {
+	 padding: 20px;
+	 background: #fff;
+	 margin: 0 auto;
+	 border: 1px solid #ddd;
+}
+ .extra-stuff {
+	 max-width: 700px;
+	 margin: 0 auto;
+	 text-align: center;
+}
+ .extra-stuff h1 {
+	 margin-top: 40px;
+}
+ .extra-stuff h1 small {
+	 font-weight: normal;
+}
+ .extra-stuff p {
+	 display: block;
+	 max-width: 500px;
+	 margin: 0 auto;
+}
+ .extra-stuff code {
+	 font-size: 12px;
+	 padding: 10px;
+	 background: white;
+}
+ .checkout__box {
+	 max-width: 400px;
+}
+ .checkout__box .price {
+	 text-align: right;
+	 font-size: 16px;
+	 font-weight: 700;
+	 color: black;
+	 margin-bottom: 10px;
+}
+ .checkout__box .price .reg_price.crossed {
+	 color: #888;
+	 text-decoration: line-through;
+	 font-weight: 400;
+}
+ .checkout__box h3 {
+	 font-size: 12px;
+	 text-transform: uppercase;
+	 font-weight: 600;
+	 letter-spacing: 1.5px;
+}
+ .checkout__box hr {
+	 border: none;
+	 margin: 0;
+	 padding: 0;
+	 border-bottom: 1px solid #ddd;
+}
+ .checkout__box .checkout__opts .opt {
+	 padding: 15px 0;
+	 border: 1px solid #ccc;
+	 border-radius: 5px;
+	 margin-bottom: 15px;
+	 font-size: 14px;
+	 cursor: pointer;
+}
+ .checkout__box .checkout__opts .opt .radio_btn {
+	 width: 20px;
+	 height: 20px;
+	 border-radius: 50%;
+	 border: 1px solid #bbb;
+	 display: block;
+	 position: relative;
+}
+ .checkout__box .checkout__opts .opt.selected {
+	 border: 2px solid black;
+}
+ .checkout__box .checkout__opts .opt.selected .radio_btn {
+	 border: 2px solid #3ab54b;
+}
+ .checkout__box .checkout__opts .opt.selected .radio_btn:before {
+	 content: "";
+	 width: 14px;
+	 height: 14px;
+	 display: block;
+	 position: absolute;
+	 background: #3ab54b;
+	 border-radius: 50%;
+	 top: 3px;
+	 right: 3px;
+}
+ .checkout__box .checkout__opts .opt.opt2 {
+	 padding-bottom: 10px;
+	 cursor: pointer;
+}
+ .checkout__box .checkout__opts .opt .lbl b {
+	 color: #3ab54b;
+}
+ .checkout__box .checkout__opts .opt .info-txt {
+	 padding-left: 40px;
+	 font-size: 12px;
+	 padding-bottom: 15px;
+	 padding-top: 6px;
+	 color: #666;
+	 font-style: italic;
+	 padding-right: 15px;
+}
+ .checkout__box .checkout__opts .gridme {
+	 display: grid;
+	 grid-template-columns: 30px 1fr 60px;
+	 align-items: center;
+	 padding: 0 15px;
+	 color: black;
+}
+ .checkout__box .checkout__opts .radio_price {
+	 text-align: right;
+}
+ .freq_drop {
+	 border-top: 1px solid #bbb;
+	 padding: 10px 15px 0;
+	 font-size: 14px;
+}
+ .freq_drop .freq_selected {
+	 position: relative;
+}
+ .freq_drop .freq_selected i {
+	 font-size: 20px;
+	 vertical-align: middle;
+	 color: black;
+}
+ .freq_drop .freq_selected i.la-angle-down {
+	 font-size: 14px;
+	 display: block;
+	 position: absolute;
+	 right: 5px;
+	 top: 5px;
+}
+ .freq_drop .dropout {
+	 display: none;
+}
+ .freq_drop .freq_opt {
+	 display: block;
+	 padding: 5px 0;
+	 padding-left: 25px;
+}
+ .freq_drop .freq_opt:hover {
+	 cursor: pointer;
+	 background: #f4f4f4;
+}
+ .guarantee {
+	 display: grid;
+	 grid-template-columns: 1fr 2px 1fr;
+	 grid-column-gap: 5px;
+	 text-align: center;
+	 padding: 8px 0;
+	 border-top: 1px solid #ddd;
+	 border-bottom: 1px solid #ddd;
+}
+ .guarantee div {
+	 padding: 10px;
+	 font-size: 12px;
+}
+ .guarantee div.line {
+	 padding: 0;
+	 border-right: 1px solid #ddd;
+}
+ .guarantee div i {
+	 display: block;
+	 font-size: 25px;
+	 color: black;
+	 margin-bottom: 10px;
+}
+ .checkout__btns {
+	 display: grid;
+	 grid-template-columns: auto 1fr;
+	 grid-column-gap: 15px;
+}
+ .checkout__btns .quan_sel div {
+	 padding: 5px 10px;
+	 border: 1px solid #bbb;
+	 border-radius: 4px;
+	 margin-bottom: 20px;
+	 height: 50px;
+}
+ .checkout__btns .quan_sel div label {
+	 display: block;
+	 font-size: 11px;
+	 color: #666;
+}
+ .checkout__btns .quan_sel div select {
+	 border: none;
+	 padding: 10px 0;
+	 font-size: 13px;
+	 width: 100%;
+	 display: block;
+}
+ .checkout__btns .addtocart {
+	 display: block;
+	 border-radius: 4px;
+	 color: black;
+	 font-size: 16px;
+	 font-weight: 700;
+	 width: 100%;
+	 border: 1px solid #ffbb10;
+	 background-color: #ffbb10;
+	 height: 60px;
+	 letter-spacing: 1px;
+	 transition: 0.5s;
+	 cursor: pointer;
+}
+ .checkout__btns .addtocart:hover {
+	 background-color: #3ab54b;
+	 border-color: #3ab54b;
+	 color: white;
+}
+
+	</style>
+</head>
+<body>
+	<div class="checkout__box">
+	<h4 class="price">
+		<span class="sub_price">{{ price }} ₹</span>
+	</h4>
+
+	<hr>
+
+	<h3>Purchase: <span class="sub-txt">Subscription</span></h3>
+
+	<div class="checkout__opts">
+
+
+
+		<div class="opt opt2 selected" data-rel="2" data-price="31.60">
+			<div class="gridme">
+				<div class="radio">
+					<span class="radio_btn"></span>
+				</div>
+				<div class="radio_price">{{ price }} ₹</div>
+			</div>
+			<div class="info-txt">
+				Money-back guarantee, Support , No commitment, pause anytime.
+			</div>
+		</div>
+
+	</div>
+
+	<div class="checkout__btns">
+
+		<div class="quan_sel">
+			<div>
+
+			</div>
+		</div>
+
+		<div class="cart_btn">
+			<button class="btn addtocart" id="pay-btn">Pay now</button>
+		</div>
+
+	</div>
+
+	<div class="guarantee">
+		<div>
+			<i class="las la-certificate"></i>
+			30-day Money Back Guarantee
+		</div>
+		<div class="line"></div>
+		<div>
+			<i class="las la-truck"></i>
+			Any Time Cancel
+		</div>
+	</div>
+
+</div>
+
+<form id="form__tosubmit">
+	<!-- 1=One time purchase | 2=Subscription -->
+	<input type="hidden" name="opt" value="2" id="in_opt">
+	<input type="hidden" name="freq" value="1" id="in_freq">
+	<input type="hidden" name="quan" value="1" id="in_quan">
+	<input type="hidden" name="total_price" value="31.60" id="in_total">
+</form>
+
+</body>
+
+<!-- Razorpay's Javascript code. -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+	var options = {
+
+	// Enter the Key ID generated from the Dashboard
+	key: "{{ razorpay_merchant_key }}",
+
+	// Amount is in currency subunits.
+	// Default currency is INR. Hence,
+	// 50000 refers to 50000 paise
+	amount: "{{ razorpay_amount }}",
+	currency: "{{ currency }}",
+
+	// Your/store name.
+	name: "ERP Django",
+
+	// Pass the `id` obtained in the response of Step 1
+	order_id: "{{ razorpay_order_id }}",
+	callback_url: "{{ callback_url }}",
+	};
+
+	// initialise razorpay with the options.
+	var rzp1 = new Razorpay(options);
+
+	// add event listener to the payment button.
+	document.getElementById("pay-btn").onclick = function (e) {
+	rzp1.open();
+	e.preventDefault();
+	};
+
+	$(document).ready(function () {
+	$(".opt").on("click", function () {
+		// Remove all instances of selected
+		$(".opt").removeClass("selected");
+		// collect information to pass to form
+		var rel = $(this).data("rel");
+		var pri = $(this).data("price");
+
+		//add class to selected
+		$('[data-rel="' + rel + '"]').addClass("selected");
+
+		// Update the hidden form
+		$("#in_opt").val(rel);
+		$("#in_total").val(pri);
+
+		// Update the pricing at top
+		if (rel == 1) {
+			$(".reg_price").removeClass("crossed");
+			$(".sub_price").hide();
+		} else {
+			$(".reg_price").addClass("crossed");
+			$(".sub_price").show();
+		}
+	});
+
+	$(".freq_drop").on("click", function () {
+		$(".dropout").slideToggle();
+	});
+
+	$(".freq_opt").on("click", function () {
+		var txt = $("b", this).html();
+		var rel = $(this).data("rel");
+		$(".freq_selected b").html(txt);
+		$("#in_freq").val(rel);
+	});
+
+	$("#sel_q").on("change", function () {
+		var quan = $("#sel_q option:selected").val();
+		$("#in_quan").val(quan);
+		console.log(quan);
+	});
+});
+
+</script>
+</html>
+
+{% endblock content %}

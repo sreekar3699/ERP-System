@@ -1,0 +1,130 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enterprise Resource Mannagement</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  </head>
+  <body style="background-color: black; color: #EB7F23;">
+    <main>
+      <div class="big-wrapper light">
+        <img src="{% static 'images/shape.png' %} "  alt="" class="shape">
+
+        <header>
+          <div class="container">
+            <div class="logo">
+<!--               <img src="./img/logo.png" alt="Logo" />-->
+                <a href="/"><h3>Enterprise Resource Planning</h3></a>
+            </div>
+
+            <div class="links">
+              <ul>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/pricing">Pricing</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/register" class="btn">Sign up</a></li>
+              </ul>
+            </div>
+
+            <div class="overlay"></div>
+            <div class="hamburger-menu">
+              <div class="bar"></div>
+            </div>
+          </div>
+        </header>
+          {% block content %}
+        <div class="showcase-area">
+          <div class="container">
+            <div class="left">
+              <div class="big-title" style="color: #EB7F23;">
+                <h1>Future is here,</h1>
+                <h1>Start Exploring now.</h1>
+              </div>
+              <p class="text">
+                Revolutionize your business operations and drive growth with our cutting-edge ERP solutions that seamlessly integrate every aspect of your enterprise, simplify complexity, and unlock your business's full potential.
+              </p>
+              <div class="cta">
+                <a href="#" class="btn">Get started</a>
+              </div>
+            </div>
+
+            <div class="right">
+              <img src="{% static 'images/person.png' %}">
+            </div>
+          </div>
+        </div>
+        {% endblock content %}
+        <div class="bottom-area">
+          <div class="container">
+            <button class="toggle-btn">
+<!--              <i class="far fa-moon"></i>-->
+<!--              <i class="far fa-sun"></i>-->
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- JavaScript Files -->
+
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script >
+      // Select The Elements
+var toggle_btn;
+var big_wrapper;
+var hamburger_menu;
+
+function declare() {
+  toggle_btn = document.querySelector(".toggle-btn");
+  big_wrapper = document.querySelector(".big-wrapper");
+  hamburger_menu = document.querySelector(".hamburger-menu");
+}
+
+const main = document.querySelector("main");
+
+declare();
+
+let dark = false;
+
+function toggleAnimation() {
+  // Clone the wrapper
+  dark = !dark;
+  let clone = big_wrapper.cloneNode(true);
+  if (dark) {
+    clone.classList.remove("light");
+    clone.classList.add("dark");
+  } else {
+    clone.classList.remove("dark");
+    clone.classList.add("light");
+  }
+  clone.classList.add("copy");
+  main.appendChild(clone);
+
+  document.body.classList.add("stop-scrolling");
+
+  clone.addEventListener("animationend", () => {
+    document.body.classList.remove("stop-scrolling");
+    big_wrapper.remove();
+    clone.classList.remove("copy");
+    // Reset Variables
+    declare();
+    events();
+  });
+}
+
+function events() {
+  toggle_btn.addEventListener("click", toggleAnimation);
+  hamburger_menu.addEventListener("click", () => {
+    big_wrapper.classList.toggle("active");
+  });
+}
+
+events();
+
+    </script>
+  </body>
+</html>
